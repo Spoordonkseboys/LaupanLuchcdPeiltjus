@@ -948,154 +948,31 @@ body::after {
   font-size:0.3rem;background:var(--crt-amber);color:#000;
   padding:2px 5px;letter-spacing:0.1em;
 }
-/* ===== V10 JUBILEE ===== */
-.jubilee-flags {
-  display:flex; gap:4px; justify-content:center; flex-wrap:wrap;
-  font-size:clamp(1rem,2.5vw,1.6rem);
-  animation: flagsWave 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(255,220,0,0.5));
-}
-@keyframes flagsWave {
-  0%,100% { transform:rotate(-2deg) scale(1); }
-  50%      { transform:rotate(2deg) scale(1.05); }
-}
-.jubilee-banner {
-  font-family:'Chakra Petch',sans-serif;
-  font-size:clamp(0.6rem,1.5vw,0.9rem);
-  color:#ffdd00;
-  text-shadow:0 0 12px #ffdd00, 0 0 30px rgba(255,220,0,0.4);
-  letter-spacing:0.15em;
-  text-align:center;
-  animation:bannerPulse 1.2s ease-in-out infinite alternate;
-  border:2px solid rgba(255,220,0,0.4);
-  padding:6px 20px;
-  background:rgba(255,220,0,0.06);
-}
-@keyframes bannerPulse {
-  from { text-shadow:0 0 8px #ffdd00; border-color:rgba(255,220,0,0.3); }
-  to   { text-shadow:0 0 20px #ffdd00, 0 0 40px rgba(255,220,0,0.5); border-color:rgba(255,220,0,0.8); }
-}
-
-/* Soundtrack UI */
-.soundtrack-bar {
-  display:flex; align-items:center; gap:10px;
-  background:rgba(0,0,0,0.6);
-  border:1px solid rgba(57,255,20,0.25);
-  padding:6px 14px; border-radius:4px;
-  font-family:'Chakra Petch',sans-serif;
-  font-size:0.72rem; color:rgba(57,255,20,0.7);
-  letter-spacing:0.08em; flex-wrap:wrap; justify-content:center;
-}
-.track-btn {
-  font-family:'Press Start 2P',monospace; font-size:0.38rem;
-  padding:4px 10px; border:1px solid rgba(57,255,20,0.3);
-  background:transparent; color:rgba(57,255,20,0.5);
-  cursor:pointer; letter-spacing:0.1em; transition:all 0.15s;
-}
-.track-btn.active {
-  border-color:var(--crt-green); color:var(--crt-green);
-  background:rgba(57,255,20,0.12); text-shadow:0 0 8px var(--crt-green);
-}
-.track-btn:hover { border-color:var(--crt-green); color:var(--crt-green); }
-.track-vol { width:60px; accent-color:var(--crt-green); cursor:pointer; }
-
-/* Version picker */
-#screen-version-pick {
-  background:var(--bg); gap:16px;
-}
-.ver-grid {
-  display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:800px;
-}
-.ver-card {
-  width:clamp(100px,14vw,130px);
-  background:rgba(0,20,5,0.8); border:2px solid rgba(57,255,20,0.2);
-  border-radius:6px; padding:12px 8px; text-align:center;
-  cursor:pointer; transition:all 0.15s;
-}
-.ver-card:hover {
-  border-color:var(--crt-amber); background:rgba(255,179,0,0.08);
-  box-shadow:0 0 16px rgba(255,179,0,0.2); transform:translateY(-3px);
-}
-.ver-card.current { border-color:var(--crt-green); background:rgba(57,255,20,0.08); }
-.ver-num { font-size:0.7rem; color:var(--crt-amber); margin-bottom:4px; }
-.ver-name { font-family:'Chakra Petch',sans-serif; font-size:0.6rem; color:rgba(57,255,20,0.6); line-height:1.4; }
-
-/* Party hat skin indicator */
-.party-badge {
-  background:linear-gradient(135deg,#ff4488,#ffaa00,#44ff88,#4488ff);
-  color:#000; font-size:0.35rem; padding:2px 6px;
-  font-family:'Press Start 2P',monospace; letter-spacing:0.05em;
-  border-radius:3px;
-}
-
-/* Confetti rarity */
-.rarity-anniversary { color:#ff88cc; text-shadow:0 0 15px #ff88cc, 0 0 30px rgba(255,136,204,0.5); }
-/* ===== VERSION PICKER ===== */
-.version-grid {
-  display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; padding:0 12px;
-}
-.version-card {
-  width:clamp(100px,14vw,130px);
-  background:rgba(0,20,5,0.8);
-  border:2px solid rgba(57,255,20,0.2);
-  border-radius:6px;
-  padding:10px 6px 8px;
-  text-align:center;
-  cursor:pointer;
-  transition:all 0.15s;
-}
-.version-card:hover {
-  border-color:#ffdd00;
-  background:rgba(255,221,0,0.08);
-  box-shadow:0 0 14px rgba(255,221,0,0.25);
-  transform:translateY(-3px);
-}
-.version-card.current-ver {
-  border-color:#ffdd00;
-  background:rgba(255,221,0,0.1);
-  box-shadow:0 0 20px rgba(255,221,0,0.3);
-}
-.version-card .vc-num { font-size:0.55rem; color:#ffdd00; letter-spacing:0.1em; margin-bottom:4px; }
-.version-card .vc-name { font-family:'Chakra Petch',sans-serif; font-size:0.6rem; color:rgba(57,255,20,0.7); line-height:1.4; }
-.version-card .vc-badge { font-size:0.3rem; margin-top:4px; padding:2px 6px; background:rgba(255,221,0,0.15); color:#ffdd00; letter-spacing:0.1em; }
 </style>
 </head>
 <body class="crt-flicker">
 
 <!-- ===== ATTRACT SCREEN ===== -->
 <div class="screen" id="screen-attract">
-  <canvas id="confetti-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9000;"></canvas>
-  <div class="jubilee-flags">🎊🎉🎯🎉🎊🏆🎊🎉🎯🎉🎊</div>
+  <div class="dart-icon">🎯</div>
   <div class="title-logo">
-    <div class="title-top">— 🎊 JUBILEUM EDITIE 🎊 —</div>
+    <div class="title-top">— ARCADE PRESENTS —</div>
     <span class="title-main">LAUPAN LUCHCD</span>
     <span class="title-main" style="font-size:clamp(1.2rem,3.5vw,2.2rem);color:var(--crt-amber);text-shadow:0 0 15px var(--crt-amber);">PEILTJUS</span>
-    <div class="title-sub" style="margin-top:6px;">THE ULTIMATE DART MACHINE &nbsp;·&nbsp; <span style="color:var(--crt-pink);text-shadow:0 0 8px var(--crt-pink);">v10.0 🎉</span></div>
+    <div class="title-sub" style="margin-top:10px;">THE ULTIMATE DART MACHINE &nbsp;·&nbsp; <span style="color:var(--crt-pink);text-shadow:0 0 8px var(--crt-pink);">v9.2</span></div>
   </div>
-  <div class="jubilee-banner">🥳 V10.0 IS EINDELIJK HIER! 🥳</div>
   <div class="highscore-box">
     <div class="hs-label">— HIGH SCORE —</div>
     <div class="hs-value" id="hs-display">00000</div>
   </div>
+  <div class="insert-coin">[ DRUK OP SPATIE / KNOP OM TE STARTEN ]</div>
   <div id="attract-credits" style="font-family:'Chakra Petch',sans-serif;font-size:0.8rem;color:var(--crt-amber);text-shadow:0 0 8px var(--crt-amber);letter-spacing:0.1em;margin-top:2px;">🪙 <span id="attract-credits-val">0</span> CREDITS</div>
-  <!-- Soundtrack bar -->
-  <div class="soundtrack-bar">
-    🎵
-    <button class="track-btn active" id="track-btn-0" onclick="setTrack(0)">ARCADE</button>
-    <button class="track-btn" id="track-btn-1" onclick="setTrack(1)">CHILL</button>
-    <button class="track-btn" id="track-btn-2" onclick="setTrack(2)">HYPER</button>
-    <button class="track-btn" id="track-btn-mute" onclick="toggleMute()" style="border-color:rgba(255,34,68,0.4);color:rgba(255,34,68,0.5);">🔇</button>
-    <input type="range" class="track-vol" id="track-vol" min="0" max="100" value="40" oninput="setVolume(this.value)" title="Volume">
+  <div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;justify-content:center;">
+    <button class="arcade-btn arcade-btn-green" style="font-size:0.42rem;padding:7px 14px;" onclick="showScoreboard()">🏆 SCOREBORD</button>
+    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 14px;border-color:var(--crt-amber);color:var(--crt-amber);" onclick="showShop()">📦 CRATES</button>
+    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 14px;border-color:var(--crt-blue);color:var(--crt-blue);" onclick="showSkins()">🎨 SKINS</button>
+    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 14px;border-color:var(--crt-pink);color:var(--crt-pink);" onclick="showChangelog()">📋 LOG</button>
   </div>
-  <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;justify-content:center;">
-    <button class="arcade-btn arcade-btn-green" style="font-size:0.42rem;padding:7px 12px;" onclick="openMenu()">▶ SPELEN</button>
-    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 12px;border-color:#ffdd00;color:#ffdd00;" onclick="showVersionPicker()">📼 VERSIES</button>
-    <button class="arcade-btn arcade-btn-green" style="font-size:0.42rem;padding:7px 12px;" onclick="showScoreboard()">🏆 SCORES</button>
-    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 12px;border-color:var(--crt-amber);color:var(--crt-amber);" onclick="showShop()">📦 CRATES</button>
-    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 12px;border-color:var(--crt-blue);color:var(--crt-blue);" onclick="showSkins()">🎨 SKINS</button>
-    <button class="arcade-btn" style="font-size:0.42rem;padding:7px 12px;border-color:var(--crt-pink);color:var(--crt-pink);" onclick="showChangelog()">📋 LOG</button>
-  </div>
-  <div class="insert-coin" style="margin-top:4px;">[ SPATIE = SPELEN ]</div>
 </div>
 
 <!-- ===== MENU SCREEN (control choice) ===== -->
@@ -1200,40 +1077,7 @@ body::after {
   <div class="menu-title" style="color:var(--crt-pink);text-shadow:0 0 15px var(--crt-pink);margin-bottom:4px;">📋 UPDATE LOG</div>
   <div class="changelog-scroll">
 
-    <div class="cl-version cl-current" style="border-color:#ffdd00;background:rgba(255,221,0,0.06);">
-      <div class="cl-ver-badge" style="color:#ffdd00;text-shadow:0 0 15px #ffdd00;">v10.0 🎉</div>
-      <div class="cl-ver-date">2026</div>
-      <div class="cl-ver-title" style="color:#ffdd00;">V10.0 IS EINDELIJK HIER!</div>
-      <ul class="cl-list">
-        <li class="cl-new">Jubileum confetti animatie op attract screen</li>
-        <li class="cl-new">3 procedurele soundtracks: Arcade, Chill, Hyper</li>
-        <li class="cl-new">Volume slider + mute knop</li>
-        <li class="cl-new">📼 Versie archief — speel elke versie opnieuw</li>
-        <li class="cl-new">🎊 Anniversary Crate (eenmalig gratis!) met feesthoedje</li>
-        <li class="cl-new">100+ extra skins in 4 zeldzaamheidsgraden</li>
-        <li class="cl-new">Jubileum vlaggetjes en banner op attract screen</li>
-        <li class="cl-fix">Alle extra skins in standaard/premium/legendary crates</li>
-      </ul>
-    </div>
-
-    <div class="cl-version">
-      <div class="cl-ver-badge">v9.2</div>
-    <div class="cl-version cl-current" style="border-color:rgba(255,220,0,0.6);background:rgba(255,220,0,0.06);">
-      <div class="cl-ver-badge" style="color:#ffdd00;text-shadow:0 0 15px #ffdd00;">v10.0 🎉</div>
-      <div class="cl-ver-date">2026</div>
-      <div class="cl-ver-title" style="color:#ffdd00;">V10.0 IS EINDELIJK HIER!</div>
-      <ul class="cl-list">
-        <li class="cl-new">🎊 Jubileum editie — confetti &amp; vlaggetjes op het attract scherm</li>
-        <li class="cl-new">🎵 3 procedurele soundtracks: Arcade, Chill, Hyper (Web Audio API)</li>
-        <li class="cl-new">🎂 Gratis jubileum crate (eenmalig) — feesthoedje gegarandeerd!</li>
-        <li class="cl-new">🎨 100+ extra skins toegevoegd (Common t/m Legendary)</li>
-        <li class="cl-new">📼 Versie-kiezer: alle versies van v1.0 t/m v10.0 bereikbaar</li>
-        <li class="cl-new">🥳 Anniversary zeldzaamheidsgraad voor jubileum skins</li>
-        <li class="cl-fix">Crate-tables dynamisch gegenereerd vanuit skin-definitie</li>
-      </ul>
-    </div>
-
-    <div class="cl-version">
+    <div class="cl-version cl-current">
       <div class="cl-ver-badge">v9.2</div>
       <div class="cl-ver-date">2026</div>
       <div class="cl-ver-title">THE QOL UPDATE</div>
@@ -1398,21 +1242,7 @@ body::after {
   <div style="font-family:'Chakra Petch',sans-serif;font-size:0.85rem;color:var(--crt-green);letter-spacing:0.1em;">
     🪙 <span id="shop-credits-val">0</span> CREDITS &nbsp;·&nbsp; <span style="color:rgba(57,255,20,0.5);font-size:0.7rem;">SCORE 100 = 100 MUNTEN</span>
   </div>
-  <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:1000px;">
-    <div class="crate-box" onclick="openCrate('anniversary')" style="border-color:rgba(255,136,204,0.6);background:rgba(255,136,204,0.06);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:6px;right:6px;font-size:0.35rem;background:linear-gradient(135deg,#ff4488,#ffaa00);color:#000;padding:3px 7px;font-family:'Press Start 2P',monospace;letter-spacing:0.05em;">GRATIS!</div>
-      <span class="crate-icon">🎂</span>
-      <div class="crate-name" style="color:#ff88cc;">JUBILEUM CRATE</div>
-      <div class="crate-price" style="color:#ff88cc;">🎊 GRATIS (eenmalig)</div>
-      <div class="crate-contents">Anniversary exclusief<br>Feesthoedje gegarandeerd!</div>
-    </div>
-    <div class="crate-box" onclick="claimAnniversaryCrate()" id="anniv-crate-btn" style="border-color:rgba(255,136,204,0.7);background:rgba(255,136,204,0.08);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:4px;right:6px;font-size:0.35rem;background:#ff88cc;color:#000;padding:2px 6px;letter-spacing:0.1em;">GRATIS</div>
-      <span class="crate-icon">🎊</span>
-      <div class="crate-name" style="color:#ff88cc;">ANNIVERSARY CRATE</div>
-      <div class="crate-price" style="color:#ff88cc;">🎉 EENMALIG GRATIS</div>
-      <div class="crate-contents">Feesthoedje gegarandeerd!<br>Jubileum exclusieve skins</div>
-    </div>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:860px;">
     <div class="crate-box" onclick="openCrate('standard')">
       <span class="crate-icon">📦</span>
       <div class="crate-name">STANDAARD CRATE</div>
@@ -1461,39 +1291,6 @@ body::after {
   </div>
   <div class="skin-grid" id="skin-grid"></div>
   <button class="arcade-btn arcade-btn-green" style="margin-top:10px;" onclick="goToMenu()">← TERUG</button>
-</div>
-
-<!-- ===== VERSION PICKER ===== -->
-<div class="screen hidden" id="screen-version-pick">
-  <div class="menu-title" style="color:#ffdd00;text-shadow:0 0 15px #ffdd00;">📼 VERSIE KIEZEN</div>
-  <div style="font-family:'Chakra Petch',sans-serif;font-size:0.72rem;color:rgba(57,255,20,0.5);letter-spacing:0.1em;">Alle versies van Laupan Luchcd Peiltjus</div>
-  <div class="ver-grid">
-    <div class="ver-card" onclick="launchVersion('1.0')"><div class="ver-num">v1.0</div><div class="ver-name">Initial Release<br>Bewegend bord</div></div>
-    <div class="ver-card" onclick="launchVersion('2.0')"><div class="ver-num">v2.0</div><div class="ver-name">Timing Update<br>X-as / Y-as</div></div>
-    <div class="ver-card" onclick="launchVersion('3.0')"><div class="ver-num">v3.0</div><div class="ver-name">Animation Update<br>POV darts</div></div>
-    <div class="ver-card" onclick="launchVersion('4.0')"><div class="ver-num">v4.0</div><div class="ver-name">Split Screen<br>2 spelers</div></div>
-    <div class="ver-card" onclick="launchVersion('5.0')"><div class="ver-num">v5.0</div><div class="ver-name">Kiosk Update<br>Fullscreen</div></div>
-    <div class="ver-card" onclick="launchVersion('6.0')"><div class="ver-num">v6.0</div><div class="ver-name">Scoreboard Update<br>Top 10</div></div>
-    <div class="ver-card" onclick="launchVersion('7.1')"><div class="ver-num">v7.1</div><div class="ver-name">Privacy Update<br>Overslaan</div></div>
-    <div class="ver-card" onclick="launchVersion('8.0')"><div class="ver-num">v8.0</div><div class="ver-name">Online Update<br>Server scores</div></div>
-    <div class="ver-card" onclick="launchVersion('9.0')"><div class="ver-num">v9.0</div><div class="ver-name">Skins Update<br>Crates</div></div>
-    <div class="ver-card" onclick="launchVersion('9.1')"><div class="ver-num">v9.1</div><div class="ver-name">Fairplay Update<br>MP scores fix</div></div>
-    <div class="ver-card" onclick="launchVersion('9.2')"><div class="ver-num">v9.2</div><div class="ver-name">QoL Update<br>No fullscreen</div></div>
-    <div class="ver-card current" onclick="goToMenu()"><div class="ver-num" style="color:#ffdd00;">v10.0 🎉</div><div class="ver-name" style="color:var(--crt-green);">Jubileum!<br>Huidige versie</div></div>
-  </div>
-  <div style="font-family:'Chakra Petch',sans-serif;font-size:0.65rem;color:rgba(57,255,20,0.3);letter-spacing:0.08em;text-align:center;max-width:500px;">
-    Andere versies openen in een nieuw tabblad (als apart HTML bestand). De huidige versie (v10.0) speelt direct.
-  </div>
-  <button class="arcade-btn arcade-btn-green" onclick="initAttract()">← TERUG</button>
-</div>
-
-
-<!-- ===== VERSION PICKER ===== -->
-<div class="screen hidden" id="screen-versions">
-  <div class="menu-title" style="color:#ffdd00;text-shadow:0 0 15px #ffdd00;margin-bottom:4px;">📼 VERSIE ARCHIEF</div>
-  <div style="font-family:'Chakra Petch',sans-serif;font-size:0.7rem;color:rgba(57,255,20,0.5);margin-bottom:12px;letter-spacing:0.1em;">Speel elke versie zoals hij ooit was</div>
-  <div class="version-grid" id="version-grid"></div>
-  <button class="arcade-btn arcade-btn-green" style="margin-top:14px;" onclick="goToMenu()">← TERUG</button>
 </div>
 
 <div class="screen hidden" id="screen-difficulty">
@@ -1685,7 +1482,7 @@ body::after {
 // ============================================================
 //  VERSION
 // ============================================================
-const VERSION = '10.0';
+const VERSION = '9.2';
 
 // ============================================================
 //  SCOREBOARD (persistent via localStorage)
@@ -1916,24 +1713,14 @@ const SEG_VALUES=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
 // ============================================================
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
-  const el=document.getElementById('screen-'+id);
-  if(!el){ console.warn('Screen not found:',id); return; }
-  el.classList.remove('hidden');
+  document.getElementById('screen-'+id).classList.remove('hidden');
   currentScreen = id;
-  if(id==='attract') startConfetti(4000);
 }
 
 function initAttract() {
   document.getElementById('hs-display').textContent = String(highScore).padStart(5,'0');
   refreshCreditsUI();
   showScreen('attract');
-  startConfetti();
-  // Auto-start soundtrack on first interaction
-  if(!audioCtx){
-    const startOnce=()=>{ startTrackEngine(currentTrack); document.removeEventListener('keydown',startOnce); document.removeEventListener('click',startOnce); };
-    document.addEventListener('keydown',startOnce);
-    document.addEventListener('click',startOnce);
-  }
 }
 
 function openMenu() { showScreen('menu'); }
@@ -2657,14 +2444,7 @@ function endGame(){
   }
 }
 
-function goToMenu(){
-  cancelAnimationFrame(animFrame);cancelAnimationFrame(splitAnimFrame);
-  // Reset to current version defaults
-  diffSettings.easy.speed=0.6; diffSettings.medium.speed=1.1; diffSettings.hard.speed=1.9;
-  diffSettings.easy.darts=3; diffSettings.medium.darts=3; diffSettings.hard.darts=3;
-  _selectedVersion=null;
-  initAttract();
-}
+function goToMenu(){cancelAnimationFrame(animFrame);cancelAnimationFrame(splitAnimFrame);initAttract();}
 function restartGame(){if(isSplit) startSplitGame(); else startGame();}
 
 // ============================================================
@@ -2703,148 +2483,29 @@ const SKINS_KEY    = 'peiltjus_skins_v1';
 const EQUIPPED_KEY = 'peiltjus_equipped_v1';
 
 const ALL_SKINS = [
-  // ── ORIGINAL 11 ──────────────────────────────────────────
-  { id:'dart',        name:'DART',           rarity:'common',      icon:'🎯', color:'#ffaa00' },
-  { id:'knife',       name:'MES',            rarity:'common',      icon:'🔪', color:'#cccccc' },
-  { id:'pencil',      name:'POTLOOD',        rarity:'common',      icon:'✏️', color:'#ffdd44' },
-  { id:'arrow',       name:'PIJL',           rarity:'rare',        icon:'🏹', color:'#88aa44' },
-  { id:'sword',       name:'ZWAARD',         rarity:'rare',        icon:'⚔️', color:'#4488ff' },
-  { id:'hatchet',     name:'HAKBIJL',        rarity:'rare',        icon:'🪓', color:'#cc6622' },
-  { id:'syringe',     name:'SPUIT',          rarity:'rare',        icon:'💉', color:'#44ffcc' },
-  { id:'lightsaber',  name:'LICHTZWAARD',    rarity:'epic',        icon:'🌟', color:'#cc44ff' },
-  { id:'trident',     name:'DRIETAND',       rarity:'epic',        icon:'🔱', color:'#0088ff' },
-  { id:'excalibur',   name:'EXCALIBUR',      rarity:'legendary',   icon:'👑', color:'#ffaa00' },
-  { id:'thunderbolt', name:'BLIKSEM',        rarity:'legendary',   icon:'⚡', color:'#ffff00' },
-  // ── ANNIVERSARY EXCLUSIVE ────────────────────────────────
-  { id:'partyhat',    name:'FEESTHOEDJE',    rarity:'anniversary', icon:'🎉', color:'#ff88cc' },
-  // ── NEW COMMON (30) ──────────────────────────────────────
-  { id:'ruler',       name:'LINIAAL',        rarity:'common', icon:'📏', color:'#ffeeaa' },
-  { id:'pen',         name:'PEN',            rarity:'common', icon:'🖊️', color:'#aaddff' },
-  { id:'chopstick',   name:'EETSTOKJE',      rarity:'common', icon:'🥢', color:'#f4c87d' },
-  { id:'fork',        name:'VORK',           rarity:'common', icon:'🍴', color:'#bbbbbb' },
-  { id:'toothpick',   name:'TANDENSTOKER',   rarity:'common', icon:'🪥', color:'#ffffee' },
-  { id:'straw',       name:'RIETJE',         rarity:'common', icon:'🧋', color:'#ffaacc' },
-  { id:'stick',       name:'STOK',           rarity:'common', icon:'🪵', color:'#aa7733' },
-  { id:'needle',      name:'NAALD',          rarity:'common', icon:'🪡', color:'#dddddd' },
-  { id:'pin',         name:'PUNAISE',        rarity:'common', icon:'📌', color:'#ff4444' },
-  { id:'cactus',      name:'CACTUS',         rarity:'common', icon:'🌵', color:'#44aa44' },
-  { id:'carrot',      name:'WORTEL',         rarity:'common', icon:'🥕', color:'#ff8800' },
-  { id:'banana',      name:'BANAAN',         rarity:'common', icon:'🍌', color:'#ffee00' },
-  { id:'corn',        name:'MAÏS',           rarity:'common', icon:'🌽', color:'#ffcc00' },
-  { id:'baguette',    name:'STOKBROOD',      rarity:'common', icon:'🥖', color:'#ddaa66' },
-  { id:'thermometer', name:'THERMOMETER',    rarity:'common', icon:'🌡️', color:'#ff6655' },
-  { id:'candle',      name:'KAARS',          rarity:'common', icon:'🕯️', color:'#ffcc88' },
-  { id:'key',         name:'SLEUTEL',        rarity:'common', icon:'🗝️', color:'#ccaa44' },
-  { id:'nail',        name:'SPIJKER',        rarity:'common', icon:'🔩', color:'#888888' },
-  { id:'tack',        name:'PUNTTACK',       rarity:'common', icon:'📍', color:'#cc2222' },
-  { id:'crayon',      name:'KRIJTJE',        rarity:'common', icon:'🖍️', color:'#ff6622' },
-  { id:'lollipop',    name:'LOLLY',          rarity:'common', icon:'🍭', color:'#ff44aa' },
-  { id:'icicle',      name:'IJSKEGEL',       rarity:'common', icon:'🧊', color:'#88ddff' },
-  { id:'pretzel',     name:'PRETZEL',        rarity:'common', icon:'🥨', color:'#cc8833' },
-  { id:'chopchop',    name:'BROODMES',       rarity:'common', icon:'🫙', color:'#aabbcc' },
-  { id:'pipe',        name:'PIJP',           rarity:'common', icon:'🔧', color:'#777788' },
-  { id:'wand_basic',  name:'TOVERSTAF',      rarity:'common', icon:'🪄', color:'#bb88ee' },
-  { id:'spatula',     name:'SPATEL',         rarity:'common', icon:'🍳', color:'#999999' },
-  { id:'marker',      name:'STIFT',          rarity:'common', icon:'🖌️', color:'#ee4444' },
-  { id:'compass',     name:'PASSER',         rarity:'common', icon:'📐', color:'#aaaacc' },
-  { id:'antenna',     name:'ANTENNE',        rarity:'common', icon:'📡', color:'#8899bb' },
-  // ── NEW RARE (30) ────────────────────────────────────────
-  { id:'katana',      name:'KATANA',         rarity:'rare', icon:'🗡️', color:'#ff6644' },
-  { id:'spear',       name:'SPEER',          rarity:'rare', icon:'🪃', color:'#cc8822' },
-  { id:'crossbow',    name:'KRUISBOOG',      rarity:'rare', icon:'🏹', color:'#8866aa' },
-  { id:'rapier',      name:'RAPIER',         rarity:'rare', icon:'🤺', color:'#aaccff' },
-  { id:'scalpel',     name:'SCALPEL',        rarity:'rare', icon:'🩺', color:'#ccddee' },
-  { id:'pitchfork',   name:'HOOIVORK',       rarity:'rare', icon:'🌾', color:'#ccaa44' },
-  { id:'lance',       name:'LANS',           rarity:'rare', icon:'🏇', color:'#aa6622' },
-  { id:'stiletto',    name:'STILETTO',       rarity:'rare', icon:'👠', color:'#ff2266' },
-  { id:'kunai',       name:'KUNAI',          rarity:'rare', icon:'🌑', color:'#334455' },
-  { id:'shuriken',    name:'STER',           rarity:'rare', icon:'⭐', color:'#ffcc00' },
-  { id:'machete',     name:'MACHETE',        rarity:'rare', icon:'🌴', color:'#33aa33' },
-  { id:'cleaver',     name:'KAPMES',         rarity:'rare', icon:'🍖', color:'#cc4422' },
-  { id:'poker',       name:'POOK',           rarity:'rare', icon:'🔥', color:'#ff6600' },
-  { id:'antenna2',    name:'BLIKSEMSTAF',    rarity:'rare', icon:'⚡', color:'#ffee44' },
-  { id:'corkscrew',   name:'KURKENTREKKER',  rarity:'rare', icon:'🍷', color:'#882244' },
-  { id:'pick',        name:'PIKHOUWEEL',     rarity:'rare', icon:'⛏️', color:'#8899aa' },
-  { id:'crowbar',     name:'KOEVOET',        rarity:'rare', icon:'🔨', color:'#556677' },
-  { id:'drill',       name:'BOORMACHINE',    rarity:'rare', icon:'🔩', color:'#ffaa00' },
-  { id:'sabre',       name:'SABEL',          rarity:'rare', icon:'🌙', color:'#ffcc88' },
-  { id:'naginata',    name:'NAGINATA',       rarity:'rare', icon:'⛩️', color:'#cc2200' },
-  { id:'flamingo',    name:'FLAMINGO',       rarity:'rare', icon:'🦩', color:'#ff88aa' },
-  { id:'umbrella',    name:'PARAPLU',        rarity:'rare', icon:'☂️', color:'#4466ff' },
-  { id:'cane',        name:'WANDELSTOK',     rarity:'rare', icon:'🦯', color:'#aa8844' },
-  { id:'feather',     name:'VEER',           rarity:'rare', icon:'🪶', color:'#ddccbb' },
-  { id:'tuning_fork', name:'STEMVORK',       rarity:'rare', icon:'🎵', color:'#88ccff' },
-  { id:'bone',        name:'BOT',            rarity:'rare', icon:'🦴', color:'#eeeecc' },
-  { id:'icicle2',     name:'IJSLANS',        rarity:'rare', icon:'❄️', color:'#aaeeff' },
-  { id:'branch',      name:'MAGISCHE TAK',   rarity:'rare', icon:'🌿', color:'#44bb44' },
-  { id:'gavel',       name:'RECHTERSHAMER',  rarity:'rare', icon:'⚖️', color:'#ccaa66' },
-  { id:'chopstick2',  name:'JADE STOK',      rarity:'rare', icon:'🟢', color:'#44cc88' },
-  // ── NEW EPIC (25) ────────────────────────────────────────
-  { id:'scythe',      name:'ZEIS',           rarity:'epic', icon:'💀', color:'#440066' },
-  { id:'halberd',     name:'HELLEBAARD',     rarity:'epic', icon:'⚜️', color:'#ddaa00' },
-  { id:'lance_fire',  name:'VUUREENHEID',    rarity:'epic', icon:'🔥', color:'#ff4400' },
-  { id:'ice_spear',   name:'IJSSPEER',       rarity:'epic', icon:'🧊', color:'#00ccff' },
-  { id:'shadow_blade',name:'SCHADUWMES',     rarity:'epic', icon:'🌑', color:'#220044' },
-  { id:'plasma',      name:'PLASMA',         rarity:'epic', icon:'💜', color:'#9944ff' },
-  { id:'dragon_claw', name:'DRAKENKLAUW',    rarity:'epic', icon:'🐉', color:'#ff4400' },
-  { id:'void_needle', name:'LEEGTE NAALD',   rarity:'epic', icon:'🕳️', color:'#110022' },
-  { id:'crystal',     name:'KRISTAL',        rarity:'epic', icon:'💎', color:'#44ddff' },
-  { id:'thunder_axe', name:'DONDEROGEN',     rarity:'epic', icon:'🪓', color:'#ffcc00' },
-  { id:'moon_blade',  name:'MAANMES',        rarity:'epic', icon:'🌙', color:'#aabbff' },
-  { id:'toxic',       name:'GIFPIJL',        rarity:'epic', icon:'☠️', color:'#88ff00' },
-  { id:'holy_lance',  name:'HEILIGE LANS',   rarity:'epic', icon:'✨', color:'#ffffaa' },
-  { id:'bloodsword',  name:'BLOEDZWAARD',    rarity:'epic', icon:'🩸', color:'#cc0022' },
-  { id:'gravity',     name:'ZWAARTEKRACHT',  rarity:'epic', icon:'🌀', color:'#4488aa' },
-  { id:'star_blade',  name:'STERREMES',      rarity:'epic', icon:'🌠', color:'#8866ff' },
-  { id:'wind_spear',  name:'WINDSPEER',      rarity:'epic', icon:'💨', color:'#88ccdd' },
-  { id:'magma',       name:'MAGMA',          rarity:'epic', icon:'🌋', color:'#ff6600' },
-  { id:'time_needle', name:'TIJDNAALD',      rarity:'epic', icon:'⏳', color:'#ddaa44' },
-  { id:'ghost',       name:'GEESTPIJL',      rarity:'epic', icon:'👻', color:'#aaffee' },
-  { id:'wave',        name:'GOLF',           rarity:'epic', icon:'🌊', color:'#0066ff' },
-  { id:'neon',        name:'NEON',           rarity:'epic', icon:'💡', color:'#00ffcc' },
-  { id:'acid',        name:'ZUUR',           rarity:'epic', icon:'🧪', color:'#88ff22' },
-  { id:'laser',       name:'LASER',          rarity:'epic', icon:'🔴', color:'#ff0000' },
-  { id:'sonic',       name:'SONISCH',        rarity:'epic', icon:'🔊', color:'#4400ff' },
-  // ── NEW LEGENDARY (15) ───────────────────────────────────
-  { id:'mjolnir',     name:'MJOLNIR',        rarity:'legendary', icon:'🔨', color:'#aabbff' },
-  { id:'infinity',    name:'INFINITY',       rarity:'legendary', icon:'♾️', color:'#ff8800' },
-  { id:'cosmic',      name:'KOSMISCH',       rarity:'legendary', icon:'🌌', color:'#220066' },
-  { id:'void_blade',  name:'LEEGTE',         rarity:'legendary', icon:'⬛', color:'#110011' },
-  { id:'rainbow',     name:'REGENBOOG',      rarity:'legendary', icon:'🌈', color:'#ff44aa' },
-  { id:'angel',       name:'ENGEL',          rarity:'legendary', icon:'👼', color:'#ffffee' },
-  { id:'demon',       name:'DEMON',          rarity:'legendary', icon:'😈', color:'#880000' },
-  { id:'supernova',   name:'SUPERNOVA',      rarity:'legendary', icon:'💥', color:'#ff8800' },
-  { id:'kraken',      name:'KRAKEN',         rarity:'legendary', icon:'🐙', color:'#224466' },
-  { id:'phoenix',     name:'FENIKS',         rarity:'legendary', icon:'🦅', color:'#ff4400' },
-  { id:'quasar',      name:'QUASAR',         rarity:'legendary', icon:'🌟', color:'#ffffff' },
-  { id:'tempest',     name:'STORM',          rarity:'legendary', icon:'⛈️', color:'#446688' },
-  { id:'oblivion',    name:'VERGETELHEID',   rarity:'legendary', icon:'🕯️', color:'#888866' },
-  { id:'godspear',    name:'GODSSPEER',      rarity:'legendary', icon:'⚡', color:'#ffff44' },
-  { id:'null',        name:'NULL',           rarity:'legendary', icon:'∅', color:'#333333' },
+  { id:'dart',        name:'DART',         rarity:'common',    icon:'🎯', color:'#ffaa00' },
+  { id:'knife',       name:'MES',          rarity:'common',    icon:'🔪', color:'#cccccc' },
+  { id:'pencil',      name:'POTLOOD',      rarity:'common',    icon:'✏️', color:'#ffdd44' },
+  { id:'arrow',       name:'PIJL',         rarity:'rare',      icon:'🏹', color:'#88aa44' },
+  { id:'sword',       name:'ZWAARD',       rarity:'rare',      icon:'⚔️', color:'#4488ff' },
+  { id:'hatchet',     name:'HAKBIJL',      rarity:'rare',      icon:'🪓', color:'#cc6622' },
+  { id:'syringe',     name:'SPUIT',        rarity:'rare',      icon:'💉', color:'#44ffcc' },
+  { id:'lightsaber',  name:'LICHTZWAARD',  rarity:'epic',      icon:'🌟', color:'#cc44ff' },
+  { id:'trident',     name:'DRIETAND',     rarity:'epic',      icon:'🔱', color:'#0088ff' },
+  { id:'excalibur',   name:'EXCALIBUR',    rarity:'legendary', icon:'👑', color:'#ffaa00' },
+  { id:'thunderbolt', name:'BLIKSEM',      rarity:'legendary', icon:'⚡', color:'#ffff00' },
 ];
 
-const RARITY_COLORS = { common:'#aaaaaa', rare:'#4488ff', epic:'#cc44ff', legendary:'#ffaa00', anniversary:'#ff88cc' };
-const RARITY_LABELS = { common:'COMMON', rare:'RARE', epic:'EPIC', legendary:'LEGENDARY', anniversary:'ANNIVERSARY' };
-
-// Build crate tables dynamically from ALL_SKINS
-function buildCrateTable(rarities, weights) {
-  const result = [];
-  ALL_SKINS.forEach(s => {
-    const idx = rarities.indexOf(s.rarity);
-    if (idx >= 0) result.push([s.id, weights[idx]]);
-  });
-  return result;
-}
+const RARITY_COLORS = { common:'#aaaaaa', rare:'#4488ff', epic:'#cc44ff', legendary:'#ffaa00' };
+const RARITY_LABELS = { common:'COMMON', rare:'RARE', epic:'EPIC', legendary:'LEGENDARY' };
 
 const CRATE_TABLES = {
-  anniversary: [['partyhat', 10]],
-  standard:    buildCrateTable(['common','rare','epic','legendary'],        [5,2,0.4,0.05]),
-  premium:     buildCrateTable(['common','rare','epic','legendary'],        [1,4,2,0.3]),
-  legendary:   buildCrateTable(['rare','epic','legendary'],                 [1,3,2]),
+  standard:  [['dart',5],['knife',5],['pencil',4],['arrow',3],['sword',2],['hatchet',2],['syringe',1],['lightsaber',0.4],['trident',0.4],['excalibur',0.1],['thunderbolt',0.1]],
+  premium:   [['arrow',3],['sword',3],['hatchet',3],['syringe',2],['lightsaber',2],['trident',2],['excalibur',0.4],['thunderbolt',0.4]],
+  legendary: [['lightsaber',2],['trident',2],['excalibur',1.5],['thunderbolt',1.5]],
 };
-const CRATE_PRICES = { anniversary:0, standard:1000, premium:2500, legendary:5000 };
-const CRATE_ICONS  = { anniversary:'🎂', standard:'📦', premium:'🎁', legendary:'👑' };
-const ANNIV_KEY = 'peiltjus_anniv_claimed_v1';
+const CRATE_PRICES = { standard:1000, premium:2500, legendary:5000 };
+const CRATE_ICONS  = { standard:'📦', premium:'🎁', legendary:'👑' };
 
 function getCredits()    { return parseInt(localStorage.getItem(CREDITS_KEY)||'0'); }
 function setCredits(n)   { localStorage.setItem(CREDITS_KEY, Math.max(0,Math.floor(n))); refreshCreditsUI(); }
@@ -2877,17 +2538,8 @@ function weightedPick(table){
 
 function openCrate(type){
   const price=CRATE_PRICES[type], credits=getCredits();
-  // Anniversary crate: free but one-time
-  if(type==='anniversary'){
-    if(localStorage.getItem(ANNIV_KEY)){
-      alert('Je hebt de jubileum crate al geopend! 🎉\n(Maar je hebt het feesthoedje al — dat telt!)');
-      return;
-    }
-    localStorage.setItem(ANNIV_KEY,'1');
-  } else {
-    if(credits<price){ alert(`Te weinig credits!\nJe hebt: ${credits.toLocaleString('nl')}\nKost: ${price.toLocaleString('nl')}`); return; }
-    setCredits(credits-price);
-  }
+  if(credits<price){ alert(`Te weinig credits!\nJe hebt: ${credits.toLocaleString('nl')}\nKost: ${price.toLocaleString('nl')}`); return; }
+  setCredits(credits-price);
   const skinId=weightedPick(CRATE_TABLES[type]);
   const skin=ALL_SKINS.find(s=>s.id===skinId);
   const isNew=!isSkinUnlocked(skinId);
@@ -3103,455 +2755,6 @@ function buildStuckForSkin(ax,ay,hit,arena){
   arena.appendChild(m);
   return m;
 }
-function launchVersion(ver){
-  const msg = ver==='10.0'
-    ? 'Je speelt al de nieuwste versie! Druk op SPELEN.'
-    : `Versie ${ver} zou normaal als los bestand openen (peiltjus-v${ver}.html).\n\nIn een deployment zet je elke versie als apart .html bestand naast elkaar.`;
-  alert(msg);
-}
-
-// ============================================================
-//  V10.0 JUBILEUM SYSTEMEN
-// ============================================================
-
-// ── VERSION HISTORY (voor version picker) ────────────────────
-const VERSION_HISTORY = [
-  { ver:'1.0', name:'INITIAL
-RELEASE',   speed:0.4, darts:10, notes:'Origineel bewegend bord' },
-  { ver:'2.0', name:'TIMING
-UPDATE',     speed:0.8, darts:8,  notes:'X-as + Y-as timing' },
-  { ver:'3.0', name:'ANIMATION
-UPDATE',  speed:1.0, darts:6,  notes:'POV dart animatie' },
-  { ver:'4.0', name:'SPLIT
-SCREEN',      speed:1.1, darts:6,  notes:'2-speler modus' },
-  { ver:'5.0', name:'KIOSK
-UPDATE',      speed:1.2, darts:5,  notes:'Kiosk + fullscreen' },
-  { ver:'6.0', name:'SCOREBOARD
-UPDATE', speed:1.2, darts:4,  notes:'Persistent scorebord' },
-  { ver:'7.1', name:'PRIVACY
-UPDATE',    speed:1.3, darts:4,  notes:'Overslaan optie' },
-  { ver:'8.0', name:'ONLINE
-UPDATE',     speed:1.3, darts:3,  notes:'Online scorebord' },
-  { ver:'9.0', name:'SKINS
-UPDATE',      speed:1.5, darts:3,  notes:'Crates & skins' },
-  { ver:'9.1', name:'FAIRPLAY
-UPDATE',   speed:1.5, darts:3,  notes:'Multiplayer fix' },
-  { ver:'9.2', name:'QOL
-UPDATE',        speed:1.5, darts:3,  notes:'Geen fullscreen' },
-  { ver:'10.0',name:'JUBILEUM
-EDITIE',   speed:1.8, darts:3,  notes:'🎉 HUIDIGE VERSIE', current:true },
-];
-
-let _selectedVersion = null;
-
-function renderVersionGrid(){
-  const grid=document.getElementById('version-grid');
-  if(!grid) return;
-  grid.innerHTML = VERSION_HISTORY.map(v => `
-    <div class="version-card${v.current?' current-ver':''}" onclick="selectVersion('${v.ver}')">
-      <div class="vc-num">v${v.ver}</div>
-      <div class="vc-name">${v.name}</div>
-      <div class="vc-badge">${v.notes}</div>
-    </div>`).join('');
-}
-
-function showVersionPicker(){ renderVersionGrid(); showScreen('versions'); }
-
-function selectVersion(ver){
-  const vh = VERSION_HISTORY.find(v=>v.ver===ver);
-  if(!vh) return;
-  _selectedVersion = vh;
-  // Apply version-specific settings
-  diffSettings.easy.speed   = vh.speed * 0.55;
-  diffSettings.medium.speed = vh.speed;
-  diffSettings.hard.speed   = vh.speed * 1.7;
-  diffSettings.easy.darts   = vh.darts;
-  diffSettings.medium.darts = vh.darts;
-  diffSettings.hard.darts   = Math.max(1, vh.darts - 1);
-  showScreen('difficulty');
-}
-
-// ── CONFETTI ENGINE ───────────────────────────────────────────
-let _confettiRAF = null;
-const _confettiParticles = [];
-
-function startConfetti(duration=6000){
-  const canvas=document.getElementById('confetti-canvas');
-  if(!canvas) return;
-  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-  const ctx=canvas.getContext('2d');
-  const colors=['#ff4444','#ffdd00','#44ff88','#4488ff','#ff44cc','#ff8800','#ffffff','#00ffcc'];
-  const shapes=['rect','circle','triangle'];
-  // Spawn particles
-  const spawnUntil=Date.now()+Math.min(duration,3000);
-  function spawnBatch(){
-    if(Date.now()<spawnUntil){
-      for(let i=0;i<8;i++){
-        _confettiParticles.push({
-          x:Math.random()*canvas.width,
-          y:-10,
-          vx:(Math.random()-0.5)*4,
-          vy:2+Math.random()*4,
-          rot:Math.random()*360,
-          rotV:(Math.random()-0.5)*8,
-          color:colors[Math.floor(Math.random()*colors.length)],
-          shape:shapes[Math.floor(Math.random()*shapes.length)],
-          w:6+Math.random()*10,
-          h:6+Math.random()*10,
-          alpha:1,
-          life:1,
-        });
-      }
-      setTimeout(spawnBatch,80);
-    }
-  }
-  spawnBatch();
-
-  function tick(){
-    canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    for(let i=_confettiParticles.length-1;i>=0;i--){
-      const p=_confettiParticles[i];
-      p.x+=p.vx; p.y+=p.vy; p.vy+=0.08;
-      p.vx*=0.99; p.rot+=p.rotV;
-      if(p.y>canvas.height+20){ _confettiParticles.splice(i,1); continue; }
-      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
-      ctx.globalAlpha=p.alpha;
-      ctx.fillStyle=p.color;
-      if(p.shape==='rect'){
-        ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-      } else if(p.shape==='circle'){
-        ctx.beginPath(); ctx.arc(0,0,p.w/2,0,Math.PI*2); ctx.fill();
-      } else {
-        ctx.beginPath(); ctx.moveTo(0,-p.h/2); ctx.lineTo(p.w/2,p.h/2); ctx.lineTo(-p.w/2,p.h/2); ctx.closePath(); ctx.fill();
-      }
-      ctx.restore();
-    }
-    if(_confettiParticles.length>0){
-      _confettiRAF=requestAnimationFrame(tick);
-    } else {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-    }
-  }
-  if(_confettiRAF) cancelAnimationFrame(_confettiRAF);
-  _confettiRAF=requestAnimationFrame(tick);
-}
-
-// ── SOUNDTRACKS (Web Audio API procedural) ────────────────────
-let _audioCtx = null;
-let _trackNodes = [];
-let _currentTrack = 0;
-let _muted = false;
-let _volume = 0.4;
-let _trackInterval = null;
-
-function getAudioCtx(){
-  if(!_audioCtx) _audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  return _audioCtx;
-}
-
-function stopAllTrackNodes(){
-  _trackNodes.forEach(n=>{ try{n.stop();}catch(e){} });
-  _trackNodes=[];
-  if(_trackInterval) clearInterval(_trackInterval);
-}
-
-// Track 0: ARCADE — punchy 8-bit arpeggio
-function playTrackArcade(){
-  const ac=getAudioCtx();
-  const master=ac.createGain(); master.gain.value=_muted?0:_volume*0.15; master.connect(ac.destination);
-  const notes=[261,329,392,523,659,784,659,523,392,329];
-  let step=0;
-  function tick(){
-    if(_muted||_currentTrack!==0) return;
-    const osc=ac.createOscillator();
-    const g=ac.createGain();
-    osc.type='square';
-    osc.frequency.value=notes[step%notes.length]*(Math.floor(step/notes.length)%2===0?1:2);
-    g.gain.setValueAtTime(0.3,ac.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.12);
-    osc.connect(g); g.connect(master);
-    osc.start(); osc.stop(ac.currentTime+0.13);
-    _trackNodes.push(osc);
-    step++;
-  }
-  _trackInterval=setInterval(tick,130);
-}
-
-// Track 1: CHILL — slow ambient pads
-function playTrackChill(){
-  const ac=getAudioCtx();
-  const master=ac.createGain(); master.gain.value=_muted?0:_volume*0.12; master.connect(ac.destination);
-  const chords=[[261,329,392],[293,369,440],[246,311,369],[220,277,329]];
-  let ci=0;
-  function playChord(){
-    if(_muted||_currentTrack!==1) return;
-    const chord=chords[ci%chords.length];
-    chord.forEach(freq=>{
-      const osc=ac.createOscillator();
-      const g=ac.createGain();
-      osc.type='sine'; osc.frequency.value=freq;
-      g.gain.setValueAtTime(0,ac.currentTime);
-      g.gain.linearRampToValueAtTime(0.25,ac.currentTime+0.5);
-      g.gain.linearRampToValueAtTime(0,ac.currentTime+1.8);
-      osc.connect(g); g.connect(master);
-      osc.start(); osc.stop(ac.currentTime+2);
-      _trackNodes.push(osc);
-    });
-    ci++;
-  }
-  playChord();
-  _trackInterval=setInterval(playChord,2000);
-}
-
-// Track 2: HYPER — fast aggressive techno kick + arp
-function playTrackHyper(){
-  const ac=getAudioCtx();
-  const master=ac.createGain(); master.gain.value=_muted?0:_volume*0.18; master.connect(ac.destination);
-  const scale=[440,494,523,587,659,698,784,880];
-  let step=0;
-  function tick(){
-    if(_muted||_currentTrack!==2) return;
-    // bass kick
-    if(step%4===0){
-      const osc=ac.createOscillator(); const g=ac.createGain();
-      osc.type='sine'; osc.frequency.setValueAtTime(150,ac.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(30,ac.currentTime+0.08);
-      g.gain.setValueAtTime(0.8,ac.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.1);
-      osc.connect(g); g.connect(master); osc.start(); osc.stop(ac.currentTime+0.1);
-      _trackNodes.push(osc);
-    }
-    // arp
-    const osc2=ac.createOscillator(); const g2=ac.createGain();
-    osc2.type='sawtooth';
-    osc2.frequency.value=scale[(step*3)%scale.length];
-    g2.gain.setValueAtTime(0.15,ac.currentTime);
-    g2.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.06);
-    osc2.connect(g2); g2.connect(master); osc2.start(); osc2.stop(ac.currentTime+0.07);
-    _trackNodes.push(osc2);
-    step++;
-  }
-  _trackInterval=setInterval(tick,90);
-}
-
-function setTrack(n){
-  stopAllTrackNodes();
-  _currentTrack=n;
-  [0,1,2].forEach(i=>{
-    const btn=document.getElementById('track-btn-'+i);
-    if(btn) btn.classList.toggle('active',i===n);
-  });
-  if(!_muted) startTrack(n);
-}
-
-function startTrack(n){
-  try{
-    if(n===0) playTrackArcade();
-    else if(n===1) playTrackChill();
-    else           playTrackHyper();
-  }catch(e){}
-}
-
-function toggleMute(){
-  _muted=!_muted;
-  const btn=document.getElementById('track-btn-mute');
-  if(btn){ btn.textContent=_muted?'🔇':'🔊'; btn.style.color=_muted?'var(--crt-red)':'rgba(57,255,20,0.6)'; }
-  if(_muted){ stopAllTrackNodes(); }
-  else { startTrack(_currentTrack); }
-}
-
-function setVolume(v){
-  _volume=v/100;
-  if(!_muted && _trackNodes.length===0) startTrack(_currentTrack);
-}
-
-// Auto-start music on first user interaction
-let _musicStarted=false;
-document.addEventListener('click',()=>{ if(!_musicStarted){ _musicStarted=true; startTrack(_currentTrack); } },{once:true});
-document.addEventListener('keydown',()=>{ if(!_musicStarted){ _musicStarted=true; startTrack(_currentTrack); } },{once:true});
-
-// ── ANNIVERSARY CRATE ─────────────────────────────────────────
-const ANNIVERSARY_CLAIMED_KEY='peiltjus_anniv_v10_claimed';
-
-function hasClaimedAnniversary(){ return localStorage.getItem(ANNIVERSARY_CLAIMED_KEY)==='1'; }
-function claimAnniversaryCrate(){
-  if(hasClaimedAnniversary()){ alert('Al geclaimd! Je kunt de anniversary crate maar één keer openen.'); return; }
-  localStorage.setItem(ANNIVERSARY_CLAIMED_KEY,'1');
-  // Always gives party hat
-  unlockSkin('partyhat');
-  // Show opening animation
-  const overlay=document.getElementById('crate-open-overlay');
-  const p1=document.getElementById('crate-open-phase1');
-  const p2=document.getElementById('crate-open-phase2');
-  document.getElementById('crate-open-icon').textContent='🎊';
-  Object.assign(p1.style,{display:'flex',flexDirection:'column',alignItems:'center',gap:'16px'});
-  p2.style.display='none';
-  overlay.style.display='flex';
-  overlay.style.background='rgba(80,0,40,0.97)';
-  startConfetti(5000);
-  setTimeout(()=>{
-    p1.style.display='none'; p2.style.display='flex';
-    document.getElementById('crate-result-preview').textContent='🎩';
-    document.getElementById('crate-result-name').textContent='FEESTHOEDJE';
-    const rEl=document.getElementById('crate-result-rarity');
-    rEl.textContent='ANNIVERSARY'; rEl.className='rarity-anniversary';
-    document.getElementById('crate-result-new').textContent='🎊 JUBILEUM EXCLUSIEF!';
-    overlay.style.background='rgba(60,0,60,0.97)';
-    setTimeout(()=>{ overlay.style.background='rgba(0,0,0,0.95)'; },300);
-    // Update button to claimed
-    const btn=document.getElementById('anniv-crate-btn');
-    if(btn){ btn.textContent='✓ AL GECLAIMD'; btn.disabled=true; btn.style.opacity='0.4'; }
-  },1400);
-}
-
-// ── 100 EXTRA SKINS ──────────────────────────────────────────
-// Anniversary skin
-const ANNIVERSARY_SKINS = [
-  { id:'partyhat',    name:'FEESTHOEDJE', rarity:'anniversary', icon:'🎩', color:'#ff88cc' },
-];
-
-// 99 extra skins across all categories
-const EXTRA_SKINS = [
-  // Fruits & food (common)
-  { id:'banana',     name:'BANAAN',       rarity:'common', icon:'🍌', color:'#ffee44' },
-  { id:'carrot',     name:'WORTEL',       rarity:'common', icon:'🥕', color:'#ff8800' },
-  { id:'eggplant',   name:'AUBERGINE',    rarity:'common', icon:'🍆', color:'#9900aa' },
-  { id:'corn',       name:'MAIS',         rarity:'common', icon:'🌽', color:'#ffcc00' },
-  { id:'hotdog',     name:'HOTDOG',       rarity:'common', icon:'🌭', color:'#cc6600' },
-  { id:'lollipop',   name:'LOLLY',        rarity:'common', icon:'🍭', color:'#ff44aa' },
-  { id:'icecream',   name:'IJS',          rarity:'common', icon:'🍦', color:'#ffeecc' },
-  { id:'baguette',   name:'BAGUETTE',     rarity:'common', icon:'🥖', color:'#ddaa66' },
-  { id:'chopsticks', name:'EETSTOKJES',   rarity:'common', icon:'🥢', color:'#cc8844' },
-  { id:'fork',       name:'VORK',         rarity:'common', icon:'🍴', color:'#cccccc' },
-  // Tools (common/rare)
-  { id:'hammer',     name:'HAMER',        rarity:'common', icon:'🔨', color:'#886644' },
-  { id:'wrench',     name:'STEEKSLEUTEL', rarity:'common', icon:'🔩', color:'#888888' },
-  { id:'pick',       name:'PIKHOUWEEL',   rarity:'rare',   icon:'⛏️', color:'#aaaaaa' },
-  { id:'axe2',       name:'STRIJDBIJL',   rarity:'rare',   icon:'🪓', color:'#cc4400' },
-  { id:'scissors',   name:'SCHAAR',       rarity:'rare',   icon:'✂️', color:'#888888' },
-  { id:'needle',     name:'NAALD',        rarity:'rare',   icon:'🪡', color:'#ffaacc' },
-  { id:'chainsaw',   name:'KETTINGZAAG',  rarity:'rare',   icon:'🪚', color:'#ff6600' },
-  { id:'drill',      name:'BOOR',         rarity:'rare',   icon:'🔧', color:'#ff8800' },
-  // Sports (common/rare)
-  { id:'baseball',   name:'HONKBALKNUPPEL',rarity:'common',icon:'⚾', color:'#ffffff' },
-  { id:'cricket',    name:'CRICKETBAT',   rarity:'common', icon:'🏏', color:'#ddaa66' },
-  { id:'golf',       name:'GOLFCLUB',     rarity:'rare',   icon:'⛳', color:'#44aa44' },
-  { id:'tennis',     name:'TENNISRAKET',  rarity:'rare',   icon:'🎾', color:'#88cc44' },
-  { id:'javelin',    name:'SPEER',        rarity:'rare',   icon:'🏹', color:'#888888' },
-  { id:'ski',        name:'SKI',          rarity:'rare',   icon:'⛷️', color:'#44aaff' },
-  { id:'hockey',     name:'HOCKEYSTICK',  rarity:'rare',   icon:'🏒', color:'#4488ff' },
-  { id:'billiard',   name:'BILJARTQUEUE', rarity:'rare',   icon:'🎱', color:'#226622' },
-  // Fantasy (epic)
-  { id:'wand',       name:'TOVERSTAF',    rarity:'epic',   icon:'🪄', color:'#aa44ff' },
-  { id:'scythe',     name:'ZEIS',         rarity:'epic',   icon:'☠️', color:'#885522' },
-  { id:'pitchfork',  name:'HOOIVORK',     rarity:'epic',   icon:'🔱', color:'#cc4400' },
-  { id:'staff',      name:'PERKAMENSTAF', rarity:'epic',   icon:'📜', color:'#ddaa44' },
-  { id:'halberd',    name:'HELLEBAARD',   rarity:'epic',   icon:'⚔️', color:'#6688aa' },
-  { id:'lance',      name:'LANS',         rarity:'epic',   icon:'🏇', color:'#8866aa' },
-  { id:'crossbow',   name:'KRUISBOOG',    rarity:'epic',   icon:'🏹', color:'#664422' },
-  { id:'flail',      name:'VLEGEL',       rarity:'epic',   icon:'⛓️', color:'#888888' },
-  { id:'katana',     name:'KATANA',       rarity:'epic',   icon:'⚔️', color:'#cc2244' },
-  { id:'boomerang',  name:'BOEMERANG',    rarity:'epic',   icon:'🪃', color:'#cc8844' },
-  // Sci-fi (epic/legendary)
-  { id:'lasergun',   name:'LASERGUN',     rarity:'epic',   icon:'🔫', color:'#ff4444' },
-  { id:'railgun',    name:'RAILGUN',      rarity:'epic',   icon:'⚡', color:'#4444ff' },
-  { id:'plasmablade',name:'PLASMABLAD',   rarity:'legendary',icon:'💜',color:'#aa44ff' },
-  { id:'photon',     name:'FOTONENKANON', rarity:'legendary',icon:'🌀',color:'#44ffff' },
-  { id:'antimatter', name:'ANTIMATERIE',  rarity:'legendary',icon:'💫',color:'#ffffff' },
-  // Nature (common/rare)
-  { id:'stick',      name:'STOK',         rarity:'common', icon:'🪵', color:'#886644' },
-  { id:'cactus',     name:'CACTUS',       rarity:'common', icon:'🌵', color:'#44aa44' },
-  { id:'bone',       name:'BOT',          rarity:'common', icon:'🦴', color:'#eeeedd' },
-  { id:'feather',    name:'VEER',         rarity:'rare',   icon:'🪶', color:'#ddbb88' },
-  { id:'icicle',     name:'IJSPEGEL',     rarity:'rare',   icon:'🧊', color:'#88ddff' },
-  { id:'vine',       name:'WIJNRANK',     rarity:'rare',   icon:'🌿', color:'#44cc44' },
-  { id:'mushroom',   name:'PADDENSTOEL',  rarity:'rare',   icon:'🍄', color:'#cc4422' },
-  { id:'thorn',      name:'DOORN',        rarity:'epic',   icon:'🌹', color:'#cc2244' },
-  // Animals (rare/epic)
-  { id:'snake',      name:'SLANG',        rarity:'rare',   icon:'🐍', color:'#44aa44' },
-  { id:'scorpion',   name:'SCHORPIOEN',   rarity:'rare',   icon:'🦂', color:'#cc8800' },
-  { id:'wasp',       name:'WESP',         rarity:'rare',   icon:'🐝', color:'#ffcc00' },
-  { id:'shark',      name:'HAAIENTAND',   rarity:'epic',   icon:'🦈', color:'#4488cc' },
-  { id:'narwhal',    name:'NARWAL',       rarity:'epic',   icon:'🦄', color:'#88aaff' },
-  { id:'unicornhorn',name:'EENHOORNHOORN',rarity:'legendary',icon:'🦄',color:'#ff88cc' },
-  { id:'dragonscale',name:'DRAKENBOT',    rarity:'legendary',icon:'🐲',color:'#ff4400' },
-  // Household (common)
-  { id:'toothbrush', name:'TANDENBORSTEL',rarity:'common', icon:'🪥', color:'#44aaff' },
-  { id:'ruler',      name:'LINIAAL',      rarity:'common', icon:'📏', color:'#ffcc44' },
-  { id:'pen',        name:'PEN',          rarity:'common', icon:'🖊️', color:'#4444cc' },
-  { id:'candle',     name:'KAARS',        rarity:'common', icon:'🕯️', color:'#ffeeaa' },
-  { id:'umbrella',   name:'PARAPLU',      rarity:'common', icon:'☂️', color:'#4444ff' },
-  { id:'key',        name:'SLEUTEL',      rarity:'common', icon:'🗝️', color:'#ccaa44' },
-  { id:'bookmark',   name:'BOEKENLEGGER', rarity:'common', icon:'📎', color:'#4488cc' },
-  { id:'stapler',    name:'NIETER',       rarity:'common', icon:'📌', color:'#ff4444' },
-  { id:'thermometer',name:'THERMOMETER',  rarity:'rare',   icon:'🌡️', color:'#ff4444' },
-  { id:'spatula',    name:'SPATEL',       rarity:'rare',   icon:'🍳', color:'#888888' },
-  // Music (rare/epic)
-  { id:'guitar',     name:'GITAAR',       rarity:'rare',   icon:'🎸', color:'#884400' },
-  { id:'trumpet',    name:'TROMPET',      rarity:'rare',   icon:'🎺', color:'#ffcc00' },
-  { id:'microphone', name:'MICROFOON',    rarity:'rare',   icon:'🎤', color:'#888888' },
-  { id:'drumstick',  name:'DRUMSTOK',     rarity:'rare',   icon:'🥁', color:'#884400' },
-  { id:'conductor',  name:'DIRIGEERSTOK', rarity:'epic',   icon:'🎼', color:'#ffffff' },
-  // Legendary specials
-  { id:'mjolnir',    name:'MJOLNIR',      rarity:'legendary',icon:'⚡',color:'#8888ff' },
-  { id:'poseidon',   name:'POSEIDONS ARM',rarity:'legendary',icon:'🔱',color:'#0044cc' },
-  { id:'chronos',    name:'TIJDSPEER',    rarity:'legendary',icon:'⏰', color:'#ffcc00' },
-  { id:'cosmic',     name:'KOSMISCHE STRAAL',rarity:'legendary',icon:'🌌',color:'#4400cc' },
-  { id:'void',       name:'LEEGTE',       rarity:'legendary',icon:'🕳️',color:'#000000' },
-  { id:'infinity',   name:'ONEINDIGHEID', rarity:'legendary',icon:'♾️', color:'#ffaaff' },
-  // Jubileum specials (anniversary)
-  { id:'firework',   name:'VUURWERK',     rarity:'anniversary',icon:'🎆',color:'#ff4488' },
-  { id:'balloon',    name:'BALLON',       rarity:'anniversary',icon:'🎈',color:'#ff4444' },
-  { id:'streamer',   name:'SERPENTINE',   rarity:'anniversary',icon:'🎊',color:'#ffdd00' },
-  { id:'trophy',     name:'TROFEE',       rarity:'anniversary',icon:'🏆',color:'#ffcc00' },
-  // Weird/fun (rare/epic)
-  { id:'sock',       name:'SOK',          rarity:'rare',   icon:'🧦', color:'#4488cc' },
-  { id:'pizza',      name:'PIZZA',        rarity:'rare',   icon:'🍕', color:'#ff8800' },
-  { id:'crutch',     name:'KRUK',         rarity:'rare',   icon:'🩼', color:'#cc8844' },
-  { id:'broom',      name:'BEZEM',        rarity:'rare',   icon:'🧹', color:'#884400' },
-  { id:'plunger',    name:'ONTSTOPPER',   rarity:'epic',   icon:'🪠', color:'#cc4400' },
-  { id:'divingfin',  name:'ZWEMVLIES',    rarity:'epic',   icon:'🤿', color:'#0088cc' },
-  { id:'toilet',     name:'TOILETBORSTEL',rarity:'epic',   icon:'🚽', color:'#ffffff' },
-  { id:'flamingo',   name:'FLAMINGO',     rarity:'epic',   icon:'🦩', color:'#ff88aa' },
-  { id:'cactus2',    name:'PRIKKELPAD',   rarity:'legendary',icon:'🌵',color:'#44dd44' },
-  { id:'breadstick', name:'BROODSTENGEL', rarity:'legendary',icon:'🥖',color:'#ddaa66' },
-];
-
-// Merge all skins into ALL_SKINS (add if not already present)
-[...ANNIVERSARY_SKINS, ...EXTRA_SKINS].forEach(s => {
-  if(!ALL_SKINS.find(x=>x.id===s.id)) ALL_SKINS.push(s);
-});
-
-// Add anniversary to crate tables
-CRATE_TABLES.anniversary = [['partyhat',5],['firework',2],['balloon',2],['streamer',2],['trophy',1]];
-CRATE_PRICES.anniversary  = 0;
-CRATE_ICONS.anniversary   = '🎊';
-
-// Extra skins go into standard/premium/legendary crates too
-EXTRA_SKINS.forEach(s=>{
-  if(s.rarity==='common')      CRATE_TABLES.standard.push([s.id,1]);
-  else if(s.rarity==='rare')   { CRATE_TABLES.standard.push([s.id,0.5]); CRATE_TABLES.premium.push([s.id,1]); }
-  else if(s.rarity==='epic')   { CRATE_TABLES.premium.push([s.id,0.5]); CRATE_TABLES.legendary.push([s.id,1]); }
-  else if(s.rarity==='legendary') CRATE_TABLES.legendary.push([s.id,0.5]);
-});
-
-// Anniversary skins go into premium/legendary
-ANNIVERSARY_SKINS.forEach(s=>{
-  CRATE_TABLES.premium.push([s.id,0.1]);
-  CRATE_TABLES.legendary.push([s.id,0.3]);
-});
-
-// Add anniversary rarity color/label
-RARITY_COLORS.anniversary = '#ff88cc';
-RARITY_LABELS.anniversary = 'ANNIVERSARY';
-
-// Start jubilee confetti on load
-setTimeout(()=>startConfetti(8000), 500);
-
-
-function stopConfetti(){ /* confetti fades out naturally */ }
-function launchVersion(ver){ selectVersion(ver); }
 
 initAttract();
 </script>
